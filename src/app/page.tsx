@@ -18,8 +18,12 @@ export default function Home() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) return;
 
     canvas.width = 900;
     canvas.height = 500;
@@ -251,6 +255,8 @@ export default function Home() {
     }
 
     function draw() {
+      if (!ctx) return;
+
       const sky = ctx.createLinearGradient(0, 0, 0, 500);
       sky.addColorStop(0, "#080c22");
       sky.addColorStop(1, "#24113f");
